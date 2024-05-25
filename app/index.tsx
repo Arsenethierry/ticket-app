@@ -8,11 +8,14 @@ import { router } from 'expo-router'
 
 const HomeScreen = () => {
   return (
-    <ImageBackground source={images.getStartedImg} resizeMode='cover' className='h-screen'>
-      <SafeAreaView className='flex justify-end h-full items-center'>
-        <View className='w-[90%] mb-10'>
-          <Text className='text-[#F4A951] text-3xl font-pbold'>Grab {'\n'} Your Ticket</Text>
-          <Text className='text-[#96B4B8] font-pregular text-sm my-4'>Discover the latest and most popular concerts, and easily purchase tickets in just a few taps. Join us and experience the convenience of buying concert tickets online!</Text>
+    <ImageBackground
+      source={images.getStartedImg}
+      resizeMode='cover'
+      className='h-screen flex-1 justify-end py-5 px-2'>
+      <SafeAreaView className='space-y-4 mb-10'>
+        <Text className='text-[#F4A951] text-3xl font-pbold'>Grab {'\n'} Your Ticket</Text>
+        <Text className='text-[#96B4B8] font-pregular text-sm'>Discover the latest and most popular concerts, and easily purchase tickets in just a few taps. Join us and experience the convenience of buying concert tickets online!</Text>
+        <View>
           <CustomButton
             handlePress={() => router.push("/sign-in")}
             title='Get Started'

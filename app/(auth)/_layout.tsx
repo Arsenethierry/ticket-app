@@ -1,4 +1,7 @@
+import { images } from "@/constants"
 import { Stack } from "expo-router"
+import { StatusBar } from "expo-status-bar"
+import { ImageBackground, View } from "react-native"
 
 const AuthLayout = () => {
     return (
@@ -11,6 +14,7 @@ const AuthLayout = () => {
                     }}
                 />
             </Stack>
+            <StatusBar style="light" />
         </>
     )
 }
