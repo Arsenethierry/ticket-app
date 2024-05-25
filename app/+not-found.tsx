@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native';
 
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import { StatusBar } from 'expo-status-bar';
 
 export default function NotFoundScreen() {
   return (
@@ -13,6 +14,7 @@ export default function NotFoundScreen() {
         <Link href="/" style={styles.link}>
           <ThemedText type="link">Go to home screen!</ThemedText>
         </Link>
+        <StatusBar style="dark" />
       </ThemedView>
     </>
   );
