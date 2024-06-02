@@ -17,7 +17,7 @@ const HomeScreen = () => {
         <Text className='text-[#96B4B8] font-pregular text-sm'>Discover the latest and most popular concerts, and easily purchase tickets in just a few taps. Join us and experience the convenience of buying concert tickets online!</Text>
         <View>
           <CustomButton
-            handlePress={() => router.push("/sign-in")}
+            handlePress={() => router.push("/auth-page")}
             title='Get Started'
             textStyles='text-[#04181D]'
           />

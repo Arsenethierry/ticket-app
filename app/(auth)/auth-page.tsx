@@ -5,16 +5,15 @@ import { images } from '@/constants';
 
 import FormField from '@/components/form-field';
 import CustomButton from '@/components/custome-button';
-import { useRouter, usePathname } from 'expo-router';
 
-const SignIn = () => {
+const AuthPage = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const router = useRouter();
-    const path = usePathname();
+    const [isSignup, setIsSignup] = useState<boolean>(false);
 
     const [form, setForm] = useState({
         email: "",
         password: "",
+        confirmPwd: "",
     });
     const handleSubmit = async () => {
         if (!form.email || !form.password) {
@@ -34,15 +33,15 @@ const SignIn = () => {
                     <SafeAreaView>
                         <View className='flex flex-row justify-evenly'>
                             <CustomButton
-                                handlePress={() => router.push('/sign-in')}
+                                handlePress={() => setIsSignup(false)}
                                 title='Sign In'
-                                textStyles={`${path === '/sign-in' ? 'text-primary' : 'text-[#3B3E59]'} font-pbold`}
+                                textStyles={`${!isSignup ? 'text-primary' : 'text-[#3B3E59]'} font-pbold`}
                                 containerStyles='bg-transparent'
-                                />
+                            />
                             <CustomButton
-                                handlePress={() => router.push('/sign-up')}
+                                handlePress={() => setIsSignup(true)}
                                 title='Sign Up'
-                                textStyles={`${path === '/sign-up' ? 'text-primary' : 'text-[#3B3E59]'} font-pbold`}
+                                textStyles={`${isSignup ? 'text-primary' : 'text-[#3B3E59]'} font-pbold`}
                                 containerStyles='bg-transparent'
                             />
                         </View>
@@ -59,6 +58,15 @@ const SignIn = () => {
                             type="password"
                             value={form.password}
                         />
+                        {isSignup ? (
+                            <FormField
+                                placeholder="Comfirm Password"
+                                otherStyles='mt-4'
+                                handleChangeText={(e) => setForm({ ...form, confirmPwd: e })}
+                                type="password"
+                                value={form.password}
+                            />
+                        ) : null}
                         <TouchableOpacity>
                             <Text className='text-[#3B3E59] ml-auto my-1'>Recover Password ?</Text>
                         </TouchableOpacity>
@@ -66,7 +74,7 @@ const SignIn = () => {
 
                     <CustomButton
                         handlePress={handleSubmit}
-                        title='Sign In'
+                        title={`${isSignup ? 'Sign Up' : 'Sign In'}`}
                         textStyles='text-[#04181D] font-pbold'
                         isLoading={isSubmitting}
                     />
@@ -76,4 +84,4 @@ const SignIn = () => {
     )
 }
 
-export default SignIn
+export default AuthPage
